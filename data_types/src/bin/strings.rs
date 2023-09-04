@@ -20,8 +20,13 @@ fn main() {
     // hence we use .to_string() to convert to String
 
     // converting String to &str and &String
+    // here &String is just normal reference to the String, it's just a bare pointer
+    // bare pointer -> stores just the address of the data
+    // &str is reference to the slice, its a fat pointer
+    // fat pointer -> stores the address of the data + the str length
+    // link: https://stackoverflow.com/questions/57754901/what-is-a-fat-pointer
     let string_to_str = &example_string; // here string_to_str is a reference to example_string
-    let string_to_str_2 = example_string.as_str(); // string_to_str is ref to the slice
+    let string_to_str_2 = example_string.as_str(); // string_to_str is ref to the string slice
 
     // combining strings literals 
     let combining_str_literals = ["Hi ",example_str].concat();     // returns String type 

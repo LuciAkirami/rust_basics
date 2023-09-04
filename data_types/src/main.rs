@@ -7,9 +7,12 @@ fn main() {
     let character_type = 'Z';     // character
     let boolean_type = true;      // bool data type
     let float_32_type: f32 = 4.5;       // f32 float data type
+    let float_32_type = 10_f32;    // other way to assign float
+    let float_64_type = 10f64;     // other way to assign float
+    let float_32_type = int_type as f32;       // other way to assign float / typecast int to float
     println!("Max value of u16: {}",std::u16::MAX); // printing max value that a u16 integer can store
     println!("Min value of i32: {}",std::i32::MIN); // printing min value that a i32 integer can store
-
+    
     // ---- Compound Data Types ----
     // Tuples - Can contain data of different data types
     let my_tuple: (u8, char, f32) = (25, 'a', 2.98);
