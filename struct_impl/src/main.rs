@@ -29,8 +29,15 @@ struct User{
     job: String,
 }
 
+// creating a struct tuple
+#[allow(dead_code)] 
+struct Color(u8, u8, u8);
+
 #[allow(unused_variables)] // as its placed above main fn, it supress warnings in main fn
 fn main(){
+
+    let rgb = Color(255,255,255); // each element can be accesed with "."
+
     let my_computer = ComputerInfo{
         cost: 500.0,
         id: 25,
@@ -102,12 +109,19 @@ fn main(){
     let mut new_car = CarInfo::new('I', 90);
     println!("Car with Country Code {}, Model Num {}",new_car.country_code,new_car.model_num);
 
-    // using methods of structs
-    println!("Car mileage: {}",new_car.mileage);
-    new_car.increase_mileage();
-    println!("Car Mileage Incrby 5: {}",new_car.mileage);
+    // ----- Using Methods of Structs ------
+    println!("Car mileage: {}",new_car.mileage); 
+    new_car.increase_mileage(); // this gets transformed to CarInfo::increase_mileage(&mut new_car)
+    println!("Car Mileage Incrby 5: {}\n",new_car.mileage);
 
-    // printing the struct with debug
-    println!("Debug Print the Struct {:?}",new_car);
+    // printing car information
+    new_car.get_car_info(); // this gets transformed to CarInfo::get_car_info(&new_car)
+    // the "." is just a syntactic sugar, it gets later converted to :: as shown above
+
+    // printing the struct with debug, :? uses the output formatter "Debug"
+    println!("\nDebug Print the Struct {:?}",new_car);
+    //dbg!(new_car); works same as above
+    //Note: dbg! macro prints to stderr while println! to stdout
+    //Note: dbg! takes the ownership of passed var, while println! takes reference
 
 }
