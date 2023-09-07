@@ -1,16 +1,21 @@
 #[allow(dead_code)]
 // an Enum contains a list of items
+// enums give you a way of saying a value is one of possible set of values
+// like the below example, Payment can be done using one of these options
 enum Payment{
     Cash,
     CreditCard,
     DebitCard,
 }
 
-// Enums that store a value within each item
+// -------- Enums that store a value within each item ------------
+// name of each enum variant that we define also becomes a function 
+// that constructs an instance of the enum
+// eg: DataEnums::Float() is an fn that takes f32 as arg and returns instance of DataEnum type
 #[allow(dead_code)]
 enum DataEnums{
     Integer(u8),
-    Float(f32),
+    Float(f32), 
     Character(char),
     Stringy(String),
     Person{name: String, age: u8},  // Person item stores an enum, 
