@@ -42,6 +42,7 @@ fn main() {
     match payment_method{
         Payment::Cash => println!("Paying with Cash"),
         _ => (), // here _ -> every other case & "()" -> Do nothing
+        // other => () -> this also works, we can replace "_" with any
     }
 
     // using enums that store values
@@ -69,6 +70,6 @@ fn process_datatype(datatype: DataEnums){
         DataEnums::Float(my_float) => {
             println!("Float with value {}",my_float);
         }
-        _ => ()
+        _ => () 
     }
 }
