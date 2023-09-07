@@ -54,4 +54,54 @@ fn main(){
     }
     assert_eq!(x,Some(20)); // no error occurs as its true
 
+    // Option in Match - Primitive Data Type
+    let x = Some(5);
+    match x{
+        Some(i) => println!("X contains {}",i),
+        None => (),
+    };
+    println!("{:?}\n",x);
+    // x is valid, because x contains primitive data and match "x" will copy x instead move
+
+    // Option in Match - Non Primtive
+    let x = Some("Hello".to_string()); // "x" contains non primitive data
+    match x{ // match x, this will move "x" to match
+        Some(i) => println!("X contains {}",i), 
+        None => (),
+    };
+    // println!("{:?}",x); this fails, because we already "moved" "x" to "match"
+    
+    // Solving the Above using Clone
+    let x = Some("Hello".to_string());
+    match x.clone(){ // match x, this will move "x" to match
+        Some(i) => println!("X contains {}",i), 
+        None => (),
+    };
+    println!("{:?}\n",x); // this works because are are "Cloning" the "x" instead "move"
+
+    // Referencing Option - Better Approach
+    let x = Some("Hello".to_string());
+    match &x{ // match x, this will move "x" to match
+        Some(i) => println!("X contains {}",i), // Notice here "i" is &String
+        None => (),
+    };
+    // Rust will “push down” the reference from the outer enum, &Option<String>, 
+    // to the inner field, &String
+    println!("{:?}\n",x);
+
+    // if-let, an alternative to "match"
+    // if we want to match only to a single patter we can use if-let
+    let x = Some(5);
+
+    if let Some(var) = x{
+        println!("Some contains {}",var);
+    }
+
+    // here we see that we do not need to worry about the None case
+    // in match we have to do None => () or _ => (), so with if let, we don't need to write it
+    // if-let is kinda synatic sugar of match, only used when we want to match a single pattern
+
+    
+
+
 }
