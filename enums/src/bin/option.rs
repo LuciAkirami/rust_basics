@@ -48,6 +48,7 @@ fn main(){
     let mut x = Some(10);
     // if x contains Some, then edit the value in x
     match x.as_mut(){
+        // here k binds to the value in Some, hence k = 10
         Some(k) => *k = *k * 2,
         None => (),
     }
