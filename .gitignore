@@ -7,3 +7,5 @@
 /modules_and_crates/.vscode
 /collections/target
 /collections/.vscode
+/generics_traits_lifetimes/target
+/generics_traits_lifetimes/.vscode
