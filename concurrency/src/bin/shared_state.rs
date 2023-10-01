@@ -24,7 +24,8 @@ fn main(){
     let m = Mutex::new(5);
 
     { // Here this scope takes control of the mutex from the main scope by blocking it,
-        //  by calling the lock() method, thus this scope can access and modify it.
+        //  by calling the lock() method, you are locking the mutex to this scope
+        // thus this scope can access and modify it.
 
         // lock() - Acquires a mutex, blocking the current thread until it is able to do so.
         // the lock() returns a LockResult<MutexGuard<'_, T>> which is unwrapped
@@ -38,10 +39,10 @@ fn main(){
         // the inner scope
 
         // after this scope ends, the mutex is given back to the main scope, so the main
-        // scope now owns the mutex "m" and can change its data
+        // scope now owns the mutex "m" and can change its data, thus mutex unlocked at end of scope
     }
     // the same scope example fits with threads. When a thread owns the mutex with mutex.lock(),
-    // this will block the current thread so it can't do any worj until its our turn to have lock
+    // this will block the current thread so it can't do any work until its our turn to have lock
 
     // After dropping the lock, we can print the mutex value and see that we were able to change 
     // the inner i32 to 6.

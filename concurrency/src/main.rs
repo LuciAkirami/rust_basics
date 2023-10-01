@@ -13,6 +13,10 @@ move_data.rs -> How to move data from one thread to another
 move_data_scopes.rs -> Referencing data from Main Thread inside Spawned Thread via
 scope
 
+mutex_datasharing.rs -> Sharing data between threads using Mutex
+
+shared_states.rs -> Passing Mutex between threads using Arc<T>
+
 move_data_advanced.rs - > We talk about MPSC(Mutiple producer, Single subscriber). We
 will transmit message from one thread and try to receive it from another
 
