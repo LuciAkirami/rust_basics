@@ -79,5 +79,21 @@ fn main(){
         handle.join().unwrap();
     }
 
-    println!("Result: {}", *counter.lock().unwrap());
+    println!("Result using Arc<T>: {}", *counter.lock().unwrap());
+
+    // Doing the same thing as above but with Scoped Threads instead Arc<T>
+    // We will use the scoped threads to share the information between the threads
+
+    let new_counter = Mutex::new(0);
+
+    thread::scope(|scope| {
+        for _ in 0..10{
+            scope.spawn(||{
+                let mut num = new_counter.lock().unwrap();
+                *num += 1;
+            });
+        }       
+    });
+
+    println!("Result using Scoped Threads: {}", *new_counter.lock().unwrap());
 }
